@@ -1,13 +1,20 @@
 package br.com.alurases.salurase;
 
 
+//import java.security.Principal;
+//import java.util.ArrayList;
+//import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.com.alurases.salurase.model.DadosSerie;
-import br.com.alurases.salurase.service.ConsumoApi;
-import br.com.alurases.salurase.service.ConverteDados;
+//import br.com.alurases.salurase.model.DadosEpisodio;
+//import br.com.alurases.salurase.model.DadosSerie;
+//import br.com.alurases.salurase.model.DadosTemporada;
+//import br.com.alurases.salurase.service.ConsumoApi;
+//import br.com.alurases.salurase.service.ConverteDados;
+import br.com.alurases.salurase.principal.Principal;
 
 @SpringBootApplication
 public class SaluraseApplication implements CommandLineRunner {
@@ -17,15 +24,9 @@ public class SaluraseApplication implements CommandLineRunner {
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
-		var consumoApi = new ConsumoApi(); 	
-		var json = consumoApi.obterDados("https://www.omdbapi.com/?t=gilmore+girls&apikey=659f265d");
-		//System.out.println(json);
-		//json = consumoApi.obterDados("https://coffee.alexflipnote.dev/random.json");
-		System.out.println(json);
-		ConverteDados conversor = new ConverteDados();
-		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
-		System.out.println(dados);
+	public void run(String... args) throws Exception {	
+		Principal principal = new Principal();
+		principal.exibeMenu();
 	}
 	
 }
