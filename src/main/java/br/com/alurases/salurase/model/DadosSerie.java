@@ -13,7 +13,13 @@ public record DadosSerie(
     @JsonAlias("imdbRating")
     String avaliacao,
     @JsonProperty("imdbVotes") // lê e escreve por esse campo.
-    String votos
-) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-}
+    String votos,
+    @JsonProperty("Genre") 
+    String genero,
+    @JsonProperty("Actors") 
+    String atores,
+    @JsonProperty("Poster") 
+    String poster,
+    @JsonProperty("Plot") 
+    String sinopse
+) {}
