@@ -22,7 +22,7 @@ extends JpaRepository<Serie, Long>{
         List<Serie> findTop5ByOrderByAvaliacaoDesc();
         List<Serie> findByGenero(Categoria genero);
         List<Serie> findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(int totalTemporadas, double avaliacao);
-
+        List<Serie> findTop5ByOrderByEpisodiosDataLancamentoDesc();
         @Query("SELECT e FROM Serie s JOIN s.episodios e WHERE e.titulo ILIKE %:trechoEpisodio%")
         List<Episodio> episodiosPorTrecho(String trechoEpisodio);
         @Query("SELECT e FROM Serie s JOIN s.episodios e WHERE s = :serie ORDER BY e.avaliacao DESC LIMIT 5")
