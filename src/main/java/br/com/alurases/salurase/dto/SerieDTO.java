@@ -1,9 +1,6 @@
 package br.com.alurases.salurase.dto;
 
 import br.com.alurases.salurase.model.Categoria;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 
 public record SerieDTO(
     Long id

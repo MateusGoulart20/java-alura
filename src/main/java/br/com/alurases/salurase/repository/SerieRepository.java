@@ -27,6 +27,12 @@ extends JpaRepository<Serie, Long>{
         List<Episodio> episodiosPorTrecho(String trechoEpisodio);
         @Query("SELECT e FROM Serie s JOIN s.episodios e WHERE s = :serie ORDER BY e.avaliacao DESC LIMIT 5")
         List<Episodio> topEpisodiosPorSerie(Serie serie);
+        @Query("SELECT e FROM Serie s JOIN s.episodios e WHERE s.id = :idSerie ORDER BY e.avaliacao DESC LIMIT 5")
+        List<Episodio> topEpisodiosPorSerie(Long idSerie);
         @Query("SELECT e FROM Serie s JOIN s.episodios e WHERE s = :serie AND YEAR(e.dataLancamento) >= :anoLancamento")
         List<Episodio> episodiosPorSerieEAno(Optional<Serie> serie, String anoLancamento);
+        @Query("SELECT s FROm Serie s JOIN s.episodios e GROUP BY s ORDER BY MAX(e.dataLancamento) DESC LIMIT 5")
+        List<Serie> lancamentosMaisRecentes();
+        @Query("SELECT e FROM Serie s JOIN s.episodios e WHERE s.id = :id AND e.temporada = :numero")
+        List<Episodio> obterEpisodiosPorTemporadas(Long id, Long numero);
 }
